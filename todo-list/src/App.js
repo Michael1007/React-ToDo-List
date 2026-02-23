@@ -10,7 +10,7 @@ function App() {
 
   const addTodo = () => {
     if (input.trim() === '') return;
-    setTodos([...todos, {text: input, completed: false}]); //...todos is a spread operator: copies all existing todos into a new array, then adds the new input as an object at the end.
+    setTodos([...todos, {text: input, isChecked: false}]); //...todos is a spread operator: copies all existing todos into a new array, then adds the new input as an object at the end.
     setInput(''); // clears text box by resetting the input state back to empty string.
   };
 
