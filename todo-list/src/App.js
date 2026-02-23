@@ -13,7 +13,11 @@ function App() {
     setTodos([...todos, input]); //...todos is a spread operator: copies all existing todos into a new array, then adds the new input at the end.
     setInput(''); // clears text box by resetting the input state back to empty string.
   };
-  
+
+  const deleteTodo = (index) => {
+    setTodos(todos.filter((_, i) => i !== index)); //filters out the todo at the specified index, creating a new array without it.
+  };
+
   return (
     <div>
       <h1>Todo List</h1> {/* Header element */}
@@ -26,11 +30,14 @@ function App() {
       />
 
       <button onClick={addTodo}>Add</button> {/* button named "Add" calls function addTodo when clicked */}
-
-      {/* The following renders our list: */}
+      {/* The following renders our list. UL stands for Unordered list */}
       <ul>
         {todos.map((todo, index) => ( //this line loops over every item in the todos array and turns each one into an "li" (list item) element
-          <li key={index}>{todo}</li> //something Reach needs when rendering lists, helps react keep track of which item is which
+          <li 
+            //something Reach needs when rendering lists, helps react keep track of which item is which
+            key={index}>{todo}
+              <button style={{marginLeft: '8px'}} onClick={() => deleteTodo(index)}>Delete</button>
+          </li> 
           //The {todo} part displays the text of each "todo" item
         ))}
       </ul>
