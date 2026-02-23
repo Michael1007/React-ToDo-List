@@ -13,7 +13,7 @@ function App() {
     setTodos([...todos, input]); //...todos is a spread operator: copies all existing todos into a new array, then adds the new input at the end.
     setInput(''); // clears text box by resetting the input state back to empty string.
   };
-
+  
   return (
     <div>
       <h1>Todo List</h1> {/* Header element */}
