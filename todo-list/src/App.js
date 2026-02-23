@@ -27,6 +27,13 @@ function App() {
     }));
   };
 
+  const textStyle = (index) => {
+    const todo = todos[index];
+    return {
+      textDecoration: todo && todo.isChecked ? 'line-through' : 'none', // if isChecked is true, apply line-through, otherwise no decoration
+    };
+  };
+
   return (
     <div>
       <h1>Todo List</h1> {/* Header element */}
@@ -53,7 +60,7 @@ function App() {
               onChange={() => toggleComplete(index)} // calls toggleComplete function when checkbox is clicked, passing the index of the current todo item
             />
 
-            <span style={{ marginLeft: '8px' }}>{todo.text}</span> {/* This displays the text of the todo item, with some space to the left of the checkbox */}
+            <span style={{ marginLeft: '8px', ...textStyle(index) }}>{todo.text}</span> {/* This displays the text of the todo item, with some space to the left of the checkbox */}
             <button style={{marginLeft: '8px'}} onClick={() => deleteTodo(index)}>Delete</button>
 
           </li> 
